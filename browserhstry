@@ -1,8 +1,4 @@
-package Webbrowser;
-
-import java.util.Scanner ;
-
-public class Browser {
+class Browser {
 	
 	private static String[] visitedURLs=new String[10];
 	public Browser() {

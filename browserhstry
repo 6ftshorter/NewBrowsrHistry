@@ -1,14 +1,15 @@
-package BrowserPackage;
+package NewPackage;
+
 
 import java.util.Scanner;
 
-class Browser {
+class BrowserDefinition {
 		
-		private static String[] visitedURLs=new String[10];
-		public Browser() {
+		private static String[] visitedURLs=new String[6];
+		public BrowserDefinition() {
 			
 		}
-		public Browser(String[] URLs) {
+		public BrowserDefinition(String[] URLs) {
 			int j=0;
 			for(int i=0;i<visitedURLs.length;i++) {
 				if (j==URLs.length) break;
@@ -20,63 +21,64 @@ class Browser {
 				}
 			}
 		}
-		public void remove(int n ) {
-			for(int k = 0;k<visitedURLs.length;k++) {
-				if(k==n)
-					visitedURLs[k]=" ";
-					break();
-			}	
+		public void remove(int n,String s[] ) {
+			for(int k = 0;k<6;k++) {
+				if(k==(n-1))
+					s[k]=" ";
+					
+			}
+			System.out.println("History removed successfully\n");
 		}
 		
+		
+		
 		public void display() {
-			for(int i=0;i<visitedURLs.length;i++) {
+			for(int i=0;i<6;i++) {
 				System.out.println(visitedURLs[i]);
 			}
 		}
 
-		class his{
+		class Browser1{
 		
 			public static void main (String[] args) {
-				String[] sites= new String[3];
-				String[] webs= new String[3];
+				String[] sites1= new String[3];
+				String[] sites2= new String[3];
 				Scanner sc=new Scanner(System.in);
+				System.out.println("Enter the Chrome URLs\n");
 				
-				for(int i=0;i<sites.length;i++) {
-					sites[i]=sc.nextLine();
+				for(int i=0;i<sites1.length;i++) {
+					sites1[i]=sc.nextLine();
 				}
-				for(int i=0;i<webs.length;i++) {
-					webs[i]=sc.nextLine();
+				
+				System.out.println("Enter the Firefox URLs\n");
+
+				for(int i=0;i<sites2.length;i++) {
+					sites2[i]=sc.nextLine();
 				}
 			
-			sc.close();
-			Browser mybrow=new Browser(sites);
-			Browser my=new Browser(webs);
+			BrowserDefinition chrome=new BrowserDefinition(sites1);
+			BrowserDefinition firefox=new BrowserDefinition(sites2);
 			char choice='Y';
 			do{
-			System.out.println("Enter your choice\n 1.Remove Mybrow history\n 2. Remove My history\n 3. Display Mybrow\n 4.Display My");
+			System.out.println("Enter your choice\n 1.Remove history\n 2. Display  history\n ");
 			int x = sc.nextInt();
 			switch(x) {
 				case 1:
 					System.out.println("Enter the position to remove history");
 					int change= sc.nextInt();
-					mybrow.remove(change);
+					chrome.remove(change,chrome.visitedURLs);
 					break;
+				
 				case 2:
-					System.out.println("Enter the position to remove history");
-					int change2= sc.nextInt();
-					mybrow.remove(change2);
-					break;
-				case 3:
-						mybrow.display();
+						chrome.display();
 						break;
-				case 4:
-						my.display();
-						break;
+				
 				default:
 					System.out.println("Wrong choice");
 					break;
 			}	
-			
+			System.out.println("Would you like to continue(Y/N)/n");
+			choice = sc.next().charAt(0);
 			}while(choice=='Y');
 			
 			
